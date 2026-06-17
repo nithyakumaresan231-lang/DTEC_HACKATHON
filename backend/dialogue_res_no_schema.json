@@ -1,0 +1,20 @@
+{
+  "title": "College Admission Inquiry - கல்லூரி சேர்க்கை",
+  "exchanges": [
+    {
+      "speaker": "மாணவர்",
+      "tamil": "வணக்கம் ஐயா. இந்த ஆண்டு கணினி அறிவியல் இளங்கலை சேர்க்கைக்கான தகுதிகள் என்னென்ன என்று கூற முடியுமா?",
+      "english": "Hello sir. Could you please tell me the eligibility criteria for B.Sc. Computer Science admission this year?"
+    },
+    {
+      "speaker": "சேர்க்கை அதிகாரி",
+      "tamil": "வணக்கம் தம்பி. பன்னிரண்டாம் வகுப்பில் கணிதப் பாடத்துடன் குறைந்தபட்சம் அறுபது சதவீத மதிப்பெண்கள் பெற்றிருக்க வேண்டும். உங்களுடைய மதிப்பெண் சான்றிதழைக் கொண்டு வந்திருக்கிறீர்களா?",
+      "english": "Hello. You must have secured a minimum of sixty percent marks with Mathematics in class twelve. Have you brought your mark sheet?"
+    },
+    {
+      "speaker": "மாணவர்",
+      "tamil": "ஆம் ஐயா, எனது அசல் மதிப்பெண் சான்றிதழ் மற்றும் மாற்றுச் சான்றிதழின் நகல்களைக் கொண்டு வந்துள்ளேன். தயவுசெய்து சரிபார்க்கவும்.",
+      "english": "Yes sir, I have brought my original mark sheet and copies of the transfer certificate. Please verify them."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# Python
+backend/venv/
+backend/.env
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+backend/app/data/app.db
+backend/app/data/*.db
+
+# Node
+frontend/node_modules/
+frontend/dist/
+node_modules/
+dist/
+
+# Local Environment / Secrets
+.env
+.env.local
+.env.*.local
+
+# IDEs & System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Scratch and system logs
+.gemini/
+*.log

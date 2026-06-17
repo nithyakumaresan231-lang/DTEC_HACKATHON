@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@400;700&family=Inter:wght@300;400;500;600;700;800&family=Mukta+Malar:wght@400;500;700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f0f7ff;
+  --color-brand-100: #e0effe;
+  --color-brand-200: #bae2fd;
+  --color-brand-300: #7dd2fc;
+  --color-brand-400: #38bdf8;
+  --color-brand-500: #0ea5e9;
+  --color-brand-600: #0284c7;
+  --color-brand-700: #0369a1;
+  --color-brand-800: #075985;
+  --color-brand-900: #0c4a6e;
+  --color-brand-950: #082f49;
+
+  --color-tamil-50: #fbf7ff;
+  --color-tamil-100: #f5ebff;
+  --color-tamil-200: #eed6ff;
+  --color-tamil-300: #e0b3ff;
+  --color-tamil-400: #cc85ff;
+  --color-tamil-500: #b252ff;
+  --color-tamil-600: #9d33eb;
+  --color-tamil-700: #8126c2;
+  --color-tamil-800: #68239c;
+  --color-tamil-900: #53217d;
+  --color-tamil-950: #330e52;
+
+  --font-sans: "Inter", "system-ui", "sans-serif";
+  --font-tamil: "Mukta Malar", "Arima", "sans-serif";
+}
+
+@utility glass-panel {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 25px -5px rgba(241, 245, 249, 0.5), 0 8px 10px -6px rgba(241, 245, 249, 0.5);
+}
+
+.dark .glass-panel {
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 41, 59, 0.5);
+  box-shadow: none;
+}
+
+@utility glass-input {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgb(226, 232, 240);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.dark .glass-input {
+  background-color: rgba(2, 6, 23, 0.4);
+  border-color: rgb(30, 41, 59);
+  color: rgb(248, 250, 252);
+}
+
+.glass-input:focus {
+  border-color: #b252ff;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(178, 82, 255, 0.2);
+}
+
+@utility glow-card {
+  position: relative;
+  overflow: hidden;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.glow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(178, 82, 255, 0.1);
+}
+
+body {
+  background-color: rgb(248, 250, 252);
+  color: rgb(15, 23, 42);
+  transition-property: color, background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+body.dark {
+  background-color: rgb(2, 6, 23);
+  color: rgb(248, 250, 252);
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(203, 213, 225);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgb(30, 41, 59);
+}
+
+/* Custom animation keyframes */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.pulse-glow-bg {
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+/* Background grid pattern */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(51, 65, 85, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(51, 65, 85, 0.1) 1px, transparent 1px);
+}
