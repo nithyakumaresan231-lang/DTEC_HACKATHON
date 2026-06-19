@@ -251,60 +251,22 @@ def generate_content_with_fallback(prompt: str, response_schema=None, temperatur
             logger.warning(f"Model {model_name} failed: {safe_log_text(str(e))}. Trying next fallback model...")
     raise last_err
 
+async def generate_tamil_dialogue(
+    scenario: str,
+    topic: str,
+    tone: str,
+    exchanges_count: int
+) -> dict:
 
-async def generate_tamil_dialogue(scenario: str, topic: str, tone: str, exchanges_count: int) -> dict:
-    """
-    Generates a realistic Tamil dialogue using the Gemini API, 
-    with a structured JSON schema. Falls back to static templates if API key is missing.
-    """
-    if not api_key:
-        logger.info(f"API key missing. Using fallback dialogue for scenario: {scenario}")
-        dialogue = MOCK_DIALOGUES.get(scenario.lower(), MOCK_DIALOGUES["default"])
-        return {
-            "title": dialogue["title"],
-            "exchanges": dialogue["exchanges"][:exchanges_count]
-        }
-        
-    prompt = f"""
-    You are an expert Tamil language teacher and NLP assistant. 
-    Generate a grammatically correct, natural, and educational dialogue in Tamil based on the following input parameters:
-    
-    1. Scenario/Setting: {scenario}
-    2. Specific Topic: {topic}
-    3. Tone: {tone} (e.g. Formal, Informal, Respectful, Friendly)
-    4. Exact number of conversational exchanges: {exchanges_count} (an exchange is one speaker speaking once)
-    
-    The generated JSON object MUST conform to the schema and contain exactly these keys:
-    - "title": A short English title for the dialogue scenario (string).
-    - "exchanges": A list of exactly {exchanges_count} dialogue exchanges, where each exchange is an object with exactly these keys:
-      - "speaker": Role or name of the speaker in Tamil (string).
-      - "tamil": The dialogue line written in Tamil script (string).
-      - "english": The English translation of the dialogue line (string).
-    
-    Do not add extra text, preamble, or epilogue. Return ONLY valid JSON matching this structure.
-    """
-    
-    try:
-        response_text = generate_content_with_fallback(prompt, temperature=0.7)
-        dialogue_json = clean_and_parse_json(response_text)
-        
-        if not isinstance(dialogue_json, dict):
-            raise ValueError(f"Expected a JSON object/dictionary, but parsed {type(dialogue_json)}")
-            
-        if "exchanges" not in dialogue_json:
-            raise KeyError(f"'exchanges' key is missing in parsed JSON. Parsed keys: {list(dialogue_json.keys())}")
-            
-        # Enforce exact exchanges count even on API return just in case
-        dialogue_json["exchanges"] = dialogue_json["exchanges"][:exchanges_count]
-        return dialogue_json
-            
-    except Exception as e:
-        logger.error(f"Error generating dialogue via Gemini API: {str(e)}. Using fallback.", exc_info=True)
-        dialogue = MOCK_DIALOGUES.get(scenario.lower(), MOCK_DIALOGUES["default"])
-        return {
-            "title": dialogue["title"],
-            "exchanges": dialogue["exchanges"][:exchanges_count]
-        }
+    dialogue = MOCK_DIALOGUES.get(
+        scenario.lower(),
+        MOCK_DIALOGUES["default"]
+    )
+
+    return {
+        "title": dialogue["title"],
+        "exchanges": dialogue["exchanges"][:exchanges_count]
+    }
 
 _custom_sentence_cache = {}
 
